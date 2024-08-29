@@ -29,8 +29,8 @@ class Server:
     def index_range(page: int, page_size: int) -> Tuple[int, int]:
         """Calculate start and end index range for a `page`, with `page_size`
         """
-        nextPageStartIndex = page * page_size
-        return nextPageStartIndex - page_size, nextPageStartIndex
+        tmp = page * page_size
+        return max(0, tmp - page_size), tmp
 
     def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
         """
